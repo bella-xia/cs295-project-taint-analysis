@@ -1,0 +1,53 @@
+services:
+  static:
+    build: static/
+    volumes:
+      - ./codes:/analysis/codes
+      - ./results/static:/analysis/results
+  
+  dynamic:
+    build: dynamic/
+    volumes:
+      - ./codes:/analysis/codes
+      - ./results/dynamic:/analysis/results
+    ports:
+      - "4000:4000"
+      - "9090:9090"
+    depends_on:
+      - mongo_db
+      - mysql_db
+    networks:
+      - mongo-net 
+      - mysql-net
+    environment:
+      - MONGODB_URI=mongodb://mongo_db:27017/nodegoat
+      - MYSQL_USER=dvna
+      - MYSQL_DATABASE=dvna
+      - MYSQL_PASSWORD=passw0rd
+      - MYSQL_RANDOM_ROOT_PASSWORD=yes
+      - MYSQL_HOST=mysql_db
+      - MYSQL_PORT=3306
+
+  mongo_db:
+    image: mongo:4.4
+    networks:
+      - mongo-net
+    
+  mysql_db:
+    image: mysql:5.7
+    environment:
+      - MYSQL_USER=dvna
+      - MYSQL_DATABASE=dvna
+      - MYSQL_PASSWORD=passw0rd
+      - MYSQL_RANDOM_ROOT_PASSWORD=yes
+      - MYSQL_HOST=mysql-db
+      - MYSQL_PORT=3306
+    networks:
+      - mysql-net 
+
+networks:
+  mongo-net:
+    driver: bridge
+  mysql-net:
+    driver: bridge
+  

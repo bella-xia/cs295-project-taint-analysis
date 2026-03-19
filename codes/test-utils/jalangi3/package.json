@@ -1,0 +1,37 @@
+{
+  "name": "jalangi3",
+  "version": "0.2.6",
+  "description": "dynamic analysis framework for JavaScript",
+  "dependencies": {
+    "acorn": "^8.11.0",
+    "argparse": "^2.0.1",
+    "codemirror": "5.1.0",
+    "cover": "0.2.9",
+    "datatables": "1.10.6",
+    "escodegen": "^2.1.0",
+    "estraverse": "^5.3.0",
+    "jquery": "^3.7.1",
+    "mkdirp": "^3.0.1",
+    "graceful-ncp": "3.0.0",
+    "parse5": "^7.1.2",
+    "q": "1.2.0",
+    "rewriting-proxy": "0.5.1",
+    "temp": "0.9.4"
+  },
+  "bundledDependencies": [
+    "acorn",
+    "escodegen"
+  ],
+  "scripts": {
+    "test": "./node_modules/.bin/mocha --reporter spec node_test && python scripts/runalltests.py"
+  },
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Samsung/jalangi2.git"
+  },
+  "devDependencies": {
+    "mocha": "^10.4.0",
+    "shelljs": "^0.8.5"
+  }
+}

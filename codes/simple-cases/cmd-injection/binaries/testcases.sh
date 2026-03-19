@@ -1,0 +1,7 @@
+curl "http://localhost:3000/ping?host=google.com;whoami"
+curl "http://localhost:3000/echo?host=helloworld"
+curl "http://localhost:3000/chain?host=yahoo.com;echo+PWNED"
+curl "http://localhost:3000/trim?teststr=%20netflix.com%20"
+curl "http://localhost:3000/replace?host=badhost.com;ls+/"
+curl "http://localhost:3000/concat?host=cloadflare.com"
+curl "http://localhost:3000/slice?host=justintimepracticebutthisismynamewhatareyoudoing"
